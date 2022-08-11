@@ -13,7 +13,7 @@ window.onload = function () {
 // html based on the data that is saved in the contact array variable by calling
 // the display
 const getAddress = () => {
-  fetch('https://randomuser.me/api/?results=5')
+  fetch('https://randomuser.me/api/?results=200')
     .then((res) => res.json())
     .then((address) => {
       contactArray = address.results;
@@ -46,7 +46,7 @@ const displayContacts = (array) => {
           contact.picture.large
         }" alt="user image" class="user-image" />
       </picture>
-      <h1>${contact.name.first} ${contact.name.last}</h1>
+      <h2>${contact.name.first} ${contact.name.last}</h2>
       <p>(${contact.gender})</p>
     </div>
     <div class="contact-info card-${index + 1}">
