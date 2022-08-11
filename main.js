@@ -19,13 +19,18 @@ const getAddress = () => {
       contactArray = address.results;
       displayContacts(contactArray);
       const contactButton = document.querySelectorAll('.btn');
-      console.log(contactButton);
+      // console.log(contactButton);
       contactButton.forEach((button) => {
         button.addEventListener('click', (event) => {
           const contactNumber = button.className.split('-')[2];
           const contactInfo = document.querySelector(`.card-${contactNumber}`);
           console.log(contactNumber);
-          contactInfo.style.visibility = 'visible';
+          contactInfo.classList.toggle('visible');
+          if (contactInfo.classList.value.includes('visible')) {
+            button.innerHTML = 'Show Less';
+          } else {
+            button.innerHTML = 'Show More';
+          }
         });
       });
     })
