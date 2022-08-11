@@ -116,6 +116,7 @@ button {
 /* Extra Large devices (large laptops/desktops, 1200px and up) */
 @media only screen and (min-width: 992px) {
   #page-container {
+    max-width: 1800px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 2em;
