@@ -14,17 +14,33 @@ window.onload = function () {
 // the display
 const getAddress = () => {
   fetch('https://randomuser.me/api/?results=200')
+    // * Promise to once the route is executed to take the response and convert
+    // * it to a JSON.
     .then((res) => res.json())
+    // * Promise to parse the results, and put the required data into a variable
+    // * so it can be manipulated to update the HTML
     .then((address) => {
+      // * Saving the results we want to use to a variable.
       contactArray = address.results;
+      // * Calling the displayContacts() function that is accepting the
+      // *  contactArray as an argument. This builds the HTML
       displayContacts(contactArray);
+      // * Now that the HTML has been built we can select HTML elements. We are
+      // * the selecting the button.
       const contactButton = document.querySelectorAll('.btn');
-      // console.log(contactButton);
+      // * Adding an event listener to all of the buttons.
       contactButton.forEach((button) => {
         button.addEventListener('click', (event) => {
+          // * The buttons all use the index from when they are created in the
+          // *  map loop so they can be identified. We are grabbing that number
+          // *  so we can link that button's functions to the card it is
+          // *  associated with because we did the same thing for each card.
           const contactNumber = button.className.split('-')[2];
+          // * Using the button's class # to match it to the contact card.
           const contactInfo = document.querySelector(`.card-${contactNumber}`);
-          console.log(contactNumber);
+          // console.log(contactNumber);
+          // * Toggling teh visible class and changing the button's words on
+          // *  each click.
           contactInfo.classList.toggle('visible');
           if (contactInfo.classList.value.includes('visible')) {
             button.innerHTML = 'Show Less';
@@ -40,6 +56,7 @@ const getAddress = () => {
     });
 };
 
+// # Function to display the contacts. This will accept an array of objects and will weill create new HTML using insertAdjacentHTML and string object literals and drilling down into each object as we iterate over the array of objects.
 const displayContacts = (array) => {
   array.map((contact, index) => {
     const displayUser = document.getElementById('page-container');
