@@ -1,7 +1,21 @@
+/* ####Color Pallette */
+:root {
+  --ming: #006d77ff;
+  --middle-blue-green: #83c5beff;
+  --alice-blue: #edf6f9ff;
+  --unbleached-silk: #ffddd2ff;
+  --dark-salmon: #e29578ff;
+  --orange-peel: #ffa62bff;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+body {
+  background-color: var(--alice-blue);
+  font-family: 'Poppins', sans-serif;
 }
 #page-container {
   width: 90%;
@@ -9,9 +23,10 @@
 }
 #card-container {
   margin-top: 1em;
+  background-color: var(--ming);
+  border-radius: 10px;
   height: 500px;
   width: 100%;
-  border: solid 1px green;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -26,6 +41,15 @@
   align-items: center;
 }
 
+h1 {
+  color: var(--alice-blue);
+  font-size: 28px;
+}
+
+p {
+  color: var(--unbleached-silk);
+  font-size: 18px;
+}
 picture {
   height: auto;
   width: 70%;
@@ -42,21 +66,25 @@ picture {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5em;
-  /* visibility: hidden; */
+  gap: 0.55em;
+  visibility: hidden;
 }
 
 .email {
-  color: rgb(60, 60, 247);
+  color: var(--dark-salmon);
   font-size: 16px;
 }
 
 h6 {
   font-size: 16px;
+  color: aliceblue;
 }
 
 button {
-  z-index: 20;
+  margin-bottom: 1em;
+  padding: 0.45em;
+  background-color: var(--dark-salmon);
+  color: var(--alice-blue);
+  border: none;
+  border-radius: 5px;
 }
-
-

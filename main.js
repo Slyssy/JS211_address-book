@@ -7,15 +7,38 @@ window.onload = function () {
   getAddress();
 };
 
-// This function is going to make a fetch request to the URL inside its parameter brackets (). Then it will turn the response (data it's getting back), saved here as res. The res.json will not be saved as posts and saved into the variable, arrayOfPosts
+// This function is going to make a fetch request to the URL inside its
+// parameter brackets (). Then it will turn the response (data it's getting
+// back), saved here as res. In the promise will execute the code to display the
+// html based on the data that is saved in the contact array variable by calling
+// the display
 const getAddress = () => {
   fetch('https://randomuser.me/api/?results=5')
     .then((res) => res.json())
-    .then(
-      (address) =>
-        address.results.map((contact, index) => {
-          const displayUser = document.getElementById('page-container');
-          const html = `
+    .then((address) => {
+      contactArray = address.results;
+      displayContacts(contactArray);
+      const contactButton = document.querySelectorAll('.btn');
+      console.log(contactButton);
+      contactButton.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          const contactNumber = button.className.split('-')[2];
+          const contactInfo = document.querySelector(`.card-${contactNumber}`);
+          console.log(contactNumber);
+          contactInfo.style.visibility = 'visible';
+        });
+      });
+    })
+    .catch((err) => {
+      console.log('Error');
+      console.log(err);
+    });
+};
+
+const displayContacts = (array) => {
+  array.map((contact, index) => {
+    const displayUser = document.getElementById('page-container');
+    const html = `
     <div id="card-container">
     <div class="contact-header">
       <picture>
@@ -26,32 +49,21 @@ const getAddress = () => {
       <h1>${contact.name.first} ${contact.name.last}</h1>
       <p>(${contact.gender})</p>
     </div>
-    <div class=contact-info card-${index + 1}>
+    <div class="contact-info card-${index + 1}">
       <h6 class="email">${contact.email}</h6>
       <h6>${contact.phone} (home)</h6>
       <h6>${contact.cell} (cell)</h6>
       <h6>${contact.location.street.number} ${contact.location.street.name}</h6>
       <h6>${contact.location.city}, ${contact.location.state} ${
-            contact.location.postcode
-          }</h6>
+      contact.location.postcode
+    }</h6>
       </div>
+      <button class="btn contact-button-${index + 1}">Show More</button>  
+
     </div>
     </div>
     </div>
     `;
-          displayUser.insertAdjacentHTML('afterbegin', html);
-        }),
-      displayInfo()
-    );
-};
-
-const displayInfo = (event) => {
-  const contactButton = document.querySelectorAll('.btn');
-  console.log(contactButton);
-  const contactInfo = document.querySelector(`.contact-info`);
-  contactButton.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      console.log(button);
-    });
+    displayUser.insertAdjacentHTML('afterbegin', html);
   });
 };
