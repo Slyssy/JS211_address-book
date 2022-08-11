@@ -58,8 +58,7 @@ p {
 }
 picture {
   height: auto;
-  width: 70%;
-  max-width: 182px;
+  width: 172px;
 }
 .user-image {
   object-fit: contain;
@@ -75,6 +74,10 @@ picture {
   align-items: center;
   gap: 0.55em;
   visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }
 
 .email {
@@ -94,8 +97,17 @@ button {
   color: var(--alice-blue);
   border: none;
   border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(1);
+}
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   #page-container {
