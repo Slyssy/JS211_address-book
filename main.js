@@ -42,6 +42,8 @@ const getAddress = () => {
           // * Toggling teh visible class and changing the button's words on
           // *  each click.
           contactInfo.classList.toggle('visible');
+          // * Using contact info classList.value to see if the word 'visible
+          // *  included.
           if (contactInfo.classList.value.includes('visible')) {
             button.innerHTML = 'Show Less';
           } else {
