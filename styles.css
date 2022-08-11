@@ -59,10 +59,11 @@ p {
 picture {
   height: auto;
   width: 70%;
+  max-width: 182px;
 }
 .user-image {
   object-fit: contain;
-  width: 100%;
+  width: 172px;
   border-radius: 50%;
 }
 
@@ -108,17 +109,17 @@ button {
 @media only screen and (min-width: 992px) {
   #page-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2em;
   }
 }
 
 /* Extra Large devices (large laptops/desktops, 1200px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1103px) {
   #page-container {
-    max-width: 1800px;
+    max-width: 1200px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2em;
   }
 }
