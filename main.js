@@ -16,7 +16,12 @@ const getAddress = () => {
   fetch('https://randomuser.me/api/?results=200')
     // * Promise to once the route is executed to take the response and convert
     // * it to a JSON.
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        throw Error(res.statusText);
+      }
+      return res.json();
+    })
     // * Promise to parse the results, and put the required data into a variable
     // * so it can be manipulated to update the HTML
     .then((address) => {
