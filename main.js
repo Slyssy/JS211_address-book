@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 // * Store empty variables
 let contactArray;
 // This function waits for the web page to be loaded, when it does it will run the code inside of it which happens to be getPosts()
@@ -13,7 +13,7 @@ window.onload = function () {
 // html based on the data that is saved in the contact array variable by calling
 // the display
 const getAddress = () => {
-  fetch('https://randomuser.me/api/?results=200')
+  fetch("https://randomuser.me/api/?results=200")
     // * Promise to once the route is executed to take the response and convert
     // * it to a JSON.
     .then((res) => {
@@ -32,33 +32,33 @@ const getAddress = () => {
       displayContacts(contactArray);
       // * Now that the HTML has been built we can select HTML elements. We are
       // * the selecting the button.
-      const contactButton = document.querySelectorAll('.btn');
+      const contactButton = document.querySelectorAll(".btn");
       // * Adding an event listener to all of the buttons.
       contactButton.forEach((button) => {
-        button.addEventListener('click', (event) => {
+        button.addEventListener("click", (event) => {
           // * The buttons all use the index from when they are created in the
           // *  map loop so they can be identified. We are grabbing that number
           // *  so we can link that button's functions to the card it is
           // *  associated with because we did the same thing for each card.
-          const contactNumber = button.className.split('-')[2];
+          const contactNumber = button.className.split("-")[2];
           // * Using the button's class # to match it to the contact card.
           const contactInfo = document.querySelector(`.card-${contactNumber}`);
           // console.log(contactNumber);
           // * Toggling teh visible class and changing the button's words on
           // *  each click.
-          contactInfo.classList.toggle('visible');
+          contactInfo.classList.toggle("visible");
           // * Using contact info classList.value to see if the word 'visible
           // *  included.
-          if (contactInfo.classList.value.includes('visible')) {
-            button.innerHTML = 'Show Less';
+          if (contactInfo.classList.value.includes("visible")) {
+            button.innerHTML = "Show Less";
           } else {
-            button.innerHTML = 'Show More';
+            button.innerHTML = "Show More";
           }
         });
       });
     })
     .catch((err) => {
-      console.log('Error');
+      console.log("Error");
       console.log(err);
     });
 };
@@ -66,7 +66,7 @@ const getAddress = () => {
 // # Function to display the contacts. This will accept an array of objects and will weill create new HTML using insertAdjacentHTML and string object literals and drilling down into each object as we iterate over the array of objects.
 const displayContacts = (array) => {
   array.map((contact, index) => {
-    const displayUser = document.getElementById('page-container');
+    const displayUser = document.getElementById("page-container");
     const html = `
     <div id="card-container">
     <div class="contact-header">
@@ -93,6 +93,6 @@ const displayContacts = (array) => {
     </div>
     </div>
     `;
-    displayUser.insertAdjacentHTML('afterbegin', html);
+    displayUser.insertAdjacentHTML("afterbegin", html);
   });
 };
